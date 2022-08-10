@@ -10,17 +10,19 @@ Examples:
 
 *******************************************************************************/
 
-let suffixCipher = function(sen, obj) {
+let suffixCipher = function (sen, obj) {
     let words = sen.split(' ');
     let newArr = [];
     for (word of words) {
         for (let key in obj) {
             if (word.endsWith(key)) {
-                 newArr.push(obj[key](word)); 
-            break;}
-            
+                newArr.push(obj[key](word));
+                break;
+            } else {
+                newArr.push(word)
+                break;
+            }
         }
-        newArr.push(word);
     }
     return newArr.join(' ');
 }
@@ -46,10 +48,10 @@ let suffixCipher = function(sen, obj) {
 
 
 let cipher1 = {
-    ly: function(word) {
+    ly: function (word) {
         return word.slice(0, -1) + 'ee';
     },
-    ize: function(word) {
+    ize: function (word) {
         return word + 'r';
     }
 };
@@ -57,10 +59,10 @@ console.log(suffixCipher('quietly and gently visualize', cipher1));
 // quietlee and gentlee visualizer
 
 let cipher2 = {
-    tal: function(word) {
+    tal: function (word) {
         return word.toUpperCase();
     },
-    s: function(word) {
+    s: function (word) {
         return word + 'th';
     }
 };
