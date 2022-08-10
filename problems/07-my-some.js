@@ -7,26 +7,30 @@ into the callback.
 
 Examples:
 
-let result1 = mySome([5, 1, 7, 9], function(ele, i) {
+*******************************************************************************/
+
+let mySome = function (arr, cb) {
+    let count = 0;
+    arr.forEach(function (element, index) {
+        if (cb(element, index)) count++
+    });
+    return count >= 1
+};
+
+let result1 = mySome([5, 1, 7, 9], function (ele, i) {
     return ele === i;
 });
 console.log(result1);   // true
 
-let result2 = mySome([5, 3, 7, 9], function(ele, i) {
+let result2 = mySome([5, 3, 7, 9], function (ele, i) {
     return ele === i;
 });
 console.log(result2);   // false
 
-let result3 = mySome(['soup', 'noodles', 'bike', 'ship'], function(ele) {
+let result3 = mySome(['soup', 'noodles', 'bike', 'ship'], function (ele) {
     return ele.length === 4;
 });
 console.log(result3);   // true
-*******************************************************************************/
-
-let mySome = function() {
-
-};
-
 
 
 

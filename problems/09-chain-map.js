@@ -7,30 +7,13 @@ all of the given callbacks. In other words, if three callbacks are given then:
 - the result of the first callback is given to the second callback
 - the result of the second callback is given to the third callback
 - the result of the third callback is the final result
-
-Examples:
-
-let add5 = function(n) {
-    return n + 5;
-};
-
-let half = function(n) {
-    return n / 2;
-};
-
-let square = function(n) {
-    return n * n;
-};
-
-console.log(chainMap(25, add5));                // 30
-console.log(chainMap(25, add5, half));          // 15
-console.log(chainMap(25, add5, half, square));  // 225
-console.log(chainMap(4, square, half));         // 8
-console.log(chainMap(4, half, square));         // 4
 *******************************************************************************/
 
-let chainMap = function() {
-
+let chainMap = function (value, ...cbs) {
+    cbs.forEach(function (cb) {
+        value = cb(value)
+    });
+    return value;
 };
 
 
