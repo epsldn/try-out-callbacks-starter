@@ -10,6 +10,31 @@ the accumulator should be set to the result of the callback.
 
 Examples:
 
+AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
+- Explain, but don't code, how you would refactor this problem to take in an
+  optional initial accumulator
+*******************************************************************************/
+
+let mySimpleReduce = function(arr, cb) {
+    let acc = arr[0];
+
+    for (let i = 1; i < arr.length; i++) {
+        acc = cb(acc, arr[i]);
+    }
+
+    return acc;
+}
+
+
+
+    // arr.slice(1).forEach(function(el) {
+    //     acc = cb(acc, el);
+    // })
+    // return acc;
+// };
+
+
+
 let result1 = mySimpleReduce([5, 3, 2, 4], function(sum, el) {
     return sum + el;
 });
@@ -28,19 +53,6 @@ let result3 = mySimpleReduce([4, 6, 2, 8, 3], function(max, el) {
     }
 });
 console.log(result3); // 8
-
-AFTER YOU ARE FINISHED WITH THIS PROBLEM, ASK FOR A CODE REVIEW
-- Explain, but don't code, how you would refactor this problem to take in an
-  optional initial accumulator
-*******************************************************************************/
-
-let mySimpleReduce = function() {
-
-};
-
-
-
-
 
 
 /*****************DO NOT MODIFY ANYTHING UNDER THIS  LINE**********************/
