@@ -9,19 +9,42 @@ be modified. You can assume that only one suffix of the object will match a word
 Examples:
 
 *******************************************************************************/
-let suffixCipher = function(sen, obj) {
+// let suffixCipher = function(sen, obj) {
+//     let words = sen.split(' ');
+//     let newWords = words.map(function(word) {
+//         for (let key in obj) {
+//             if (word.endsWith(key)) {
+//                 let cb = obj[key];
+//                 return cb(word);
+//             }
+//         }
+//         return word;
+//     })
+
+//     return newWords.join(' ');
+// };
+
+let suffixCipher = function (sen, obj) {
     let words = sen.split(' ');
-    let newWords = words.map(function(word) {
+    let newArr = [];
+
+    for (let index = 0; index < words.length; index++) {
+        let modified = false;
+        let word = words[index];
+
         for (let key in obj) {
-            if (word.endsWith(key)) {
-                let cb = obj[key];
-                return cb(word);
+            if (!word.endsWith(key)) {
+                continue;
+            } else {
+                newArr.push(obj[key](word));
+                modified = true;
             }
         }
-        return word;
-    })
 
-    return newWords.join(' ');
+        if (modified === false) newArr.push(word)
+    }
+    
+    return newArr.join(' ');
 };
 
 
